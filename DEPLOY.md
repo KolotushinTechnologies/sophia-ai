@@ -64,7 +64,7 @@ nano .env
 docker compose up -d --build
 ```
 
-Если Anthropic отвечает 403 с VPS (блок по региону) — в репозитории уже есть `proxy.env` (Decodo), он подключается в `docker-compose.yml` для контейнера `api`. После смены прокси: `docker compose up -d --force-recreate api`.
+Если Anthropic отвечает 403 с VPS (блок по региону) — в репозитории уже есть `proxy.env` (Decodo), он подключается в `docker-compose.yml` для контейнера `api`. SDK сам `HTTP_PROXY` не читает — в коде настроен `undici.ProxyAgent`. После деплоя в логах: `Anthropic client via proxy: ...`. Пересоздание: `docker compose up -d --build --force-recreate api`.
 
 Первый раз засидить данные (парк Находка, знания, админ):
 
