@@ -1,0 +1,25 @@
+export const TYPES = {
+  MongoClient: Symbol.for('MongoClient'),
+  Db: Symbol.for('Db'),
+  Config: Symbol.for('Config'),
+
+  ParkRepository: Symbol.for('ParkRepository'),
+  KnowledgeRepository: Symbol.for('KnowledgeRepository'),
+  CatalogRepository: Symbol.for('CatalogRepository'),
+  ResourceRepository: Symbol.for('ResourceRepository'),
+  BookingRepository: Symbol.for('BookingRepository'),
+  AdminUserRepository: Symbol.for('AdminUserRepository'),
+  SessionRepository: Symbol.for('SessionRepository'),
+
+  EmbeddingService: Symbol.for('EmbeddingService'),
+  KnowledgeService: Symbol.for('KnowledgeService'),
+  CatalogService: Symbol.for('CatalogService'),
+  ParkService: Symbol.for('ParkService'),
+  BookingService: Symbol.for('BookingService'),
+  PaymentService: Symbol.for('PaymentService'),
+  HandoffService: Symbol.for('HandoffService'),
+  AuthService: Symbol.for('AuthService'),
+  AgentOrchestrator: Symbol.for('AgentOrchestrator'),
+  McpToolRegistry: Symbol.for('McpToolRegistry'),
+  ConversationService: Symbol.for('ConversationService'),
+} as const;

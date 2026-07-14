@@ -1,0 +1,37 @@
+services:
+  api:
+    build:
+      context: .
+      target: api
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: "5555"
+      WEB_ORIGIN: ${WEB_ORIGIN:-https://sophia.letteland.space}
+    ports:
+      - "127.0.0.1:5555:5555"
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:5555/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  web:
+    build:
+      context: .
+      target: web
+    ports:
+      - "127.0.0.1:5465:80"
+    depends_on:
+      api:
+        condition: service_started
+    restart: unless-stopped

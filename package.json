@@ -1,0 +1,21 @@
+{
+  "name": "sophia-ai",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @sophia/server & npm run dev -w @sophia/web",
+    "dev:server": "npm run dev -w @sophia/server",
+    "dev:web": "npm run dev -w @sophia/web",
+    "build": "tsc -b tsconfig.build.json --force && npm run build -w @sophia/web",
+    "seed": "npm run seed -w @sophia/server",
+    "typecheck": "tsc -b tsconfig.build.json --force && npm run typecheck -w @sophia/web",
+    "docker:up": "docker compose up -d --build",
+    "docker:seed": "docker compose run --rm api node apps/server/dist/scripts/seed.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

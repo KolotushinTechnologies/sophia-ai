@@ -1,0 +1,28 @@
+{
+  "name": "@sophia/mcp-tools",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b --force",
+    "typecheck": "tsc -b --force",
+    "dev": "tsc -b --watch"
+  },
+  "dependencies": {
+    "@sophia/domain": "*",
+    "@sophia/shared": "*",
+    "inversify": "^6.2.2",
+    "reflect-metadata": "^0.2.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
