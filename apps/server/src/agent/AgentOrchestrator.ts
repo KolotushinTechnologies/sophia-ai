@@ -4,7 +4,6 @@ import { McpToolRegistry, type ToolContext } from '@sophia/mcp-tools';
 import { ParkService, TYPES } from '@sophia/domain';
 import type { ChatMessage } from '@sophia/shared';
 import type { AppConfig } from '../config.js';
-import { createAnthropicClient } from '../infrastructure/anthropicClient.js';
 
 const SYSTEM_PROMPT = `Ты — София (Sophia), умный и тёплый цифровой помощник семейного активити-парка «Софи Парк».
 
@@ -44,7 +43,7 @@ export class AgentOrchestrator {
     @inject(TYPES.McpToolRegistry) private readonly tools: McpToolRegistry,
     @inject(TYPES.ParkService) private readonly parks: ParkService,
   ) {
-    this.client = createAnthropicClient(config.anthropicApiKey);
+    this.client = new Anthropic({ apiKey: config.anthropicApiKey });
   }
 
   async *streamChat(params: {

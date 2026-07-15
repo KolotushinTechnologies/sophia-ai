@@ -5,7 +5,6 @@ services:
       target: api
     env_file:
       - .env
-      - proxy.env
     environment:
       NODE_ENV: production
       PORT: "5555"
